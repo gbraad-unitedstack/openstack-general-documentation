@@ -1,0 +1,14 @@
+image: gbraad/docugen:latest
+
+pages:
+  script:
+  - mkdir .public
+  - cd md
+  - pandoc --latex-engine=xelatex -V papersize=A4 -V mainfont=WenQuanYi\ Micro\ Hei -V geometry:margin=1in -o ../.public/01-services.pdf ./services.md
+  - cd ..
+  - mv .public public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
